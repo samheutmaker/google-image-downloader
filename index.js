@@ -2,7 +2,7 @@ const fs = require('fs-extra-promise');
 const request = require('request-promise');
 const IMAGE_SAVE_BASE_PATH = './images/';
 var Scraper = require('images-scraper'),
-  bing = new Scraper.Bing();
+  google = new Scraper.Google();
 
 function downloadImage(url, filePath) {
   let urlCopy = url;
@@ -24,7 +24,7 @@ function ensureDir(dir) {
 }
 
 function searchGoogle(search) {
-  return bing.list({
+  return google.list({
       keyword: search.keyword,
       num: search.number,
       detail: true,
