@@ -26,11 +26,9 @@ function ensureDir(dir) {
 function searchGoogle(search) {
   return google.list({
       keyword: search.keyword,
-      num: 10,
+      num: search.number,
       detail: true,
-      nightmare: {
-        show: true
-      }
+      nightmare: { show: false }
     })
     .then(function(res) {
       search.images = res;
@@ -44,12 +42,14 @@ let searches = [
   {
     keyword: 'american currency',
     name: 'american',
+    number: 1000,
     saveAs: (name, index) => `${name}/${name}.${index}.jpg`,
     images: []
   },
   {
     keyword: 'canadian currency',
     name: 'canadian',
+    number: 1000,
     saveAs: (name, index) => `${name}/${name}.${index}.jpg`,
     images: []
   }
