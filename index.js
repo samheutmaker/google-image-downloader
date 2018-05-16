@@ -2,7 +2,7 @@ const fs = require('fs-extra-promise');
 const request = require('request-promise');
 const IMAGE_SAVE_BASE_PATH = './images/';
 var Scraper = require('images-scraper'),
-  google = new Scraper.Google();
+  bing = new Scraper.Bing();
 
 function downloadImage(url, filePath) {
   let urlCopy = url;
@@ -24,7 +24,7 @@ function ensureDir(dir) {
 }
 
 function searchGoogle(search) {
-  return google.list({
+  return bing.list({
       keyword: search.keyword,
       num: search.number,
       detail: true,
@@ -42,14 +42,14 @@ let searches = [
   {
     keyword: 'american currency',
     name: 'american',
-    number: 1000,
+    number: 500,
     saveAs: (name, index) => `${name}/${name}.${index}.jpg`,
     images: []
   },
   {
     keyword: 'canadian currency',
     name: 'canadian',
-    number: 1000,
+    number: 500,
     saveAs: (name, index) => `${name}/${name}.${index}.jpg`,
     images: []
   }
